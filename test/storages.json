@@ -1,0 +1,32 @@
+[
+    {
+        "storage_id": 1,
+        "location": "Tehran",
+        "capacity": 10
+    },
+    {
+        "storage_id": 2,
+        "location": "Tabriz",
+        "capacity": 20
+    },
+    {
+        "storage_id": 1,
+        "location": "Tehran",
+        "capacity": 10
+    },
+    {
+        "storage_id": 2,
+        "location": "Tabriz",
+        "capacity": 20
+    },
+    {
+        "storage_id": 1,
+        "location": "Tehran",
+        "capacity": 10
+    },
+    {
+        "storage_id": 2,
+        "location": "Tabriz",
+        "capacity": 20
+    }
+]

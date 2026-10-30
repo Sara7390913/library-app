@@ -1,8 +1,18 @@
+from tools.logger import Logger
+from tools.validation import (name_validator, family_validator, age_validator, mobile_number_validator,
+                              national_code_validator)
+
+
 class Member:
-    def __init__(self, member_id, name, age):
+    def __init__(self, member_id, name, family, age, mobile_number, national_code):
         self.member_id = member_id
         self.name = name
+        self.family = family
         self.age = age
+        self.mobile_number = mobile_number
+        self.national_code = national_code
+        Logger.info(f"Member created: {self.name}")
+
 
     @property
     def member_id(self):
@@ -26,9 +36,17 @@ class Member:
 
     @name.setter
     def name(self, name):
-        if not isinstance(name, str):
-            raise ValueError("Invalid Member Name.")
+        name_validator(name)
         self.__name = name
+
+    @property
+    def family(self):
+        return self.__family
+
+    @family.setter
+    def family(self, family):
+        family_validator(family)
+        self.__family = family
 
     @property
     def age(self):
@@ -36,17 +54,23 @@ class Member:
 
     @age.setter
     def age(self, age):
-        try:
-            age = int(age)
-            if 1 <= age <= 120:
-                self.__age = age
-            else:
-                raise ValueError("Age must be between 1 and 120.")
-        except (ValueError, TypeError):
-            raise ValueError("Invalid Member Age.")
+        age_validator(age)
+        self.__age = age
 
+    @property
+    def mobile_number(self):
+        return self.__mobile_number
 
+    @mobile_number.setter
+    def mobile_number(self, mobile_number):
+        mobile_number_validator(mobile_number)
+        self.__mobile_number = mobile_number
 
+    @property
+    def national_code(self):
+        return self.__national_code
 
-
-
+    @national_code.setter
+    def national_code(self, national_code):
+        national_code_validator(national_code)
+        self.__national_code = national_code

@@ -21,5 +21,9 @@ class BookController:
             raise
 
     def find_by_id(self, book_id):
-        return self.book_service.find_by_id(book_id)
+        try:
+            return self.book_service.find_by_id(book_id)
+        except Exception as e:
+            Logger.error(f"Error finding book: {e}")
+            raise
 

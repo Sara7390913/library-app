@@ -1,5 +1,4 @@
 from data_access.member_da import MemberDA
-from model.member import Member
 from tools.logger import Logger
 
 

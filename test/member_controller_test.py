@@ -1,6 +1,6 @@
 from model.member import Member
 from controller.member_controller import MemberController
-from test.member_service_test import found_member
+
 
 member_controller = MemberController()
 

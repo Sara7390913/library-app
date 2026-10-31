@@ -1,7 +1,7 @@
 from service.borrow_service import BorrowService
 from tools.logger import Logger
 
-class BorrowController():
+class BorrowController:
     def __init__(self):
         self.borrow_service = BorrowService()
 
@@ -16,6 +16,13 @@ class BorrowController():
     def find_all(self):
         try:
             return self.borrow_service.find_all()
+        except Exception as e:
+            Logger.error(f"Error finding borrow: {e}")
+            raise
+
+    def find_by_id(self, borrow_id):
+        try:
+            return self.borrow_service.find_by_id(borrow_id)
         except Exception as e:
             Logger.error(f"Error finding borrow: {e}")
             raise

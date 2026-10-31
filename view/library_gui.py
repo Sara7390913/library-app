@@ -7,7 +7,6 @@ from controller.member_controller import MemberController
 from tkinter import messagebox
 from model.book import Book
 from model.borrow import Borrow
-from model.member import Member
 from datetime import date
 from model.storage import Storage
 
@@ -58,7 +57,6 @@ class LibraryGUI:
                                                                                                            pady=10)
 
     def show_books(self):
-        books = self.book_controller.find_all()
 
         books_window = tk.Toplevel(self.root)
         books_window.title("Manage Books")
@@ -94,11 +92,11 @@ class LibraryGUI:
 
         def save_book():
             try:
-                book = Book(int(book_id_entry.get()), title_entry.get(), author_entry.get(),
+                new_book = Book(int(book_id_entry.get()), title_entry.get(), author_entry.get(),
                             int(page_count_entry.get()), publisher_entry.get(),
                             category_entry.get(), language_entry.get())
 
-                self.book_controller.save(book)
+                self.book_controller.save(new_book)
                 messagebox.showinfo("Success", "Book saved successfully.")
 
                 for widget in books_window.winfo_children():
@@ -150,7 +148,7 @@ class LibraryGUI:
             try:
                 from model.member import Member
 
-                member = Member(
+                new_member = Member(
                     int(member_id_entry.get()),
                     name_entry.get(),
                     family_entry.get(),
@@ -159,7 +157,7 @@ class LibraryGUI:
                     national_code_entry.get(),
                 )
 
-                self.member_controller.save(member)
+                self.member_controller.save(new_member)
 
                 messagebox.showinfo("Success", "Member saved successfully.")
 
@@ -208,9 +206,9 @@ class LibraryGUI:
                 location = location_entry.get()
                 capacity = int(capacity_entry.get())
 
-                storage = Storage(storage_id, location, capacity, [])
+                new_storage = Storage(storage_id, location, capacity, [])
 
-                self.storage_controller.save(storage)
+                self.storage_controller.save(new_storage)
                 messagebox.showinfo("Success", "Storage saved successfully.")
 
                 storages_window.destroy()
